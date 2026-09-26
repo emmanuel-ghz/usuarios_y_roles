@@ -1,6 +1,6 @@
 # Base de datos `usuarios_roles`
 
-Script para crear en PostgreSQL la base de datos `roles_usuarios` con la tabla `user_account` y sus usuarios iniciales.
+Script para crear en PostgreSQL la base de datos `usuarios_roles` con la tabla `user_account` y sus usuarios iniciales.
 
 ## Requisitos
 
