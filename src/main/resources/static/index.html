@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Usuarios</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Gestión de Usuarios</h1>
+
+      
+
+        <section class="card">
+
+            <div class="card-header">
+                <h2>Usuarios registrados</h2>
+
+                <button id="btnRecargar">
+                    Actualizar
+                </button>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaUsuarios">
+                        <!-- Los usuarios serán insertados mediante JavaScript -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p id="mensajeTabla" class="mensaje">
+                Cargando usuarios...
+            </p>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- INSERTAR USUARIO -->
+        <!-- ========================= -->
+
+        <section class="card">
+
+            <h2>Registrar nuevo usuario</h2>
+
+            <form id="formUsuario">
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                        placeholder="Ingrese el username"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        placeholder="Ingrese el password"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="role">
+                        Role
+                    </label>
+
+                    <input
+                        type="text"
+                        id="role"
+                        name="role"
+                        required
+                        placeholder="Ejemplo: ADMIN"
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+                    Registrar usuario
+                </button>
+
+            </form>
+
+            <p id="mensajeFormulario" class="mensaje"></p>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
