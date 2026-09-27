@@ -5,9 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-
     font-family: Arial, sans-serif;
-
     background-color: #f4f6f8;
     color: #333;
 }
@@ -15,7 +13,6 @@ body {
 .container {
     width: 90%;
     max-width: 1100px;
-
     margin: 40px auto;
 }
 
@@ -29,49 +26,61 @@ h2 {
 }
 
 
+/* ========================= */
 
+
+/* TARJETAS */
+
+
+/* ========================= */
 
 .card {
     background-color: white;
-
     padding: 25px;
     margin-bottom: 25px;
-
     border-radius: 8px;
-
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+
+/* ========================= */
+
+
+/* ENCABEZADO DE TABLA */
+
+
+/* ========================= */
+
 .card-header {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     margin-bottom: 20px;
 }
 
 
+/* ========================= */
 
+
+/* TABLA */
+
+
+/* ========================= */
 
 .table-container {
     width: 100%;
-
     overflow-x: auto;
 }
 
 table {
     width: 100%;
-
     border-collapse: collapse;
 }
 
 th,
 td {
     padding: 12px;
-
     border-bottom: 1px solid #ddd;
-
     text-align: left;
 }
 
@@ -84,7 +93,13 @@ tr:hover {
 }
 
 
+/* ========================= */
 
+
+/* FORMULARIO */
+
+
+/* ========================= */
 
 .form-group {
     margin-bottom: 18px;
@@ -92,45 +107,39 @@ tr:hover {
 
 label {
     display: block;
-
     margin-bottom: 6px;
-
     font-weight: bold;
 }
 
 input {
     width: 100%;
-
     padding: 10px;
-
     border: 1px solid #ccc;
-
     border-radius: 5px;
-
     font-size: 15px;
 }
 
 input:focus {
     outline: none;
-
     border-color: #007bff;
 }
 
 
+/* ========================= */
+
+
+/* BOTONES */
+
+
+/* ========================= */
 
 button {
     padding: 10px 16px;
-
     border: none;
-
     border-radius: 5px;
-
     cursor: pointer;
-
     background-color: #6c757d;
-
     color: white;
-
     font-size: 14px;
 }
 
@@ -143,9 +152,15 @@ button:hover {
 }
 
 
+/* ========================= */
+
+
+/* MENSAJES */
+
+
+/* ========================= */
 
 .mensaje {
     margin-top: 15px;
-
     color: #666;
 }
