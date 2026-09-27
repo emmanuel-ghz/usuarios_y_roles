@@ -12,7 +12,7 @@ public interface UsuarioMapper {
     
     public UsuarioResponseDTO toResponse(UsuarioModel model);
 
-    public UsuarioModel toModel(UsuarioResponseDTO dto);
+    public UsuarioModel toModel(UsuarioRequestDTO dto);
 
     public void updateModel(@MappingTarget UsuarioModel model, UsuarioRequestDTO dto);
     
