@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <header class="page-header">
+            <div>
+                <span class="badge">ADMINISTRACIÓN</span>
+                <h1>Gestión de Usuarios</h1>
+                <p>Consulta y administra los usuarios registrados en el sistema.</p>
+            </div>
+        </header>
+
+        <section class="card search-card">
+            <div class="card-header">
+                <div>
+                    <h2>Buscar usuario</h2>
+                    <p class="section-description">Consulta un usuario utilizando su ID.</p>
+                </div>
+            </div>
+
+            <form id="formBuscarUsuario" class="search-form">
+                <div class="form-group search-input-group">
+                    <label for="buscarId">ID del usuario</label>
+                    <input type="number" id="buscarId" name="buscarId" min="1" placeholder="Ejemplo: 1" required>
+                </div>
+
+                <div class="search-buttons">
+                    <button type="submit" class="btn-primary">Buscar</button>
+                    <button type="button" id="btnLimpiarBusqueda" class="btn-secondary">Limpiar</button>
+                </div>
+            </form>
+
+            <p id="mensajeBusqueda" class="mensaje"></p>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Usuarios registrados</h2>
+                    <p class="section-description">Lista de usuarios almacenados en la base de datos.</p>
+                </div>
+                <button id="btnRecargar" class="btn-secondary">↻ Actualizar</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios"></tbody>
+                </table>
+            </div>
+
+            <p id="mensajeTabla" class="mensaje">Cargando usuarios...</p>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Registrar nuevo usuario</h2>
+                    <p class="section-description">Completa los datos para agregar un nuevo usuario.</p>
+                </div>
+            </div>
+
+            <form id="formUsuario">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required placeholder="Ingrese el username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Ingrese el password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="USER">USER</option>
+                        <option value="ADMIN">ADMIN</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Registrar usuario</button>
+            </form>
+
+            <p id="mensajeFormulario" class="mensaje"></p>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
