@@ -20,5 +20,9 @@ public class UsuarioService {
         return usuarioRepository.findAll().stream().map(usuarioMapper::toResponse).toList();
     }
 
+    public UsuarioResponseDTO obtenerPorId(int id){
+        return usuarioMapper.toResponse(usuarioRepository.findById(id).orElseThrow());
+    }
+
     
 }
