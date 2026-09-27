@@ -14,18 +14,98 @@
 
     <div class="container">
 
-        <h1>Gestión de Usuarios</h1>
+        <!-- ========================= -->
+        <!-- ENCABEZADO -->
+        <!-- ========================= -->
 
-      
+        <header class="page-header">
+            <div>
+                <span class="badge">ADMINISTRACIÓN</span>
+                <h1>Gestión de Usuarios</h1>
+                <p>Consulta y administra los usuarios registrados en el sistema.</p>
+            </div>
+        </header>
+
+
+        <!-- ========================= -->
+        <!-- BUSCAR USUARIO -->
+        <!-- ========================= -->
+
+        <section class="card search-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>Buscar usuario</h2>
+                    <p class="section-description">
+                        Consulta un usuario utilizando su ID.
+                    </p>
+                </div>
+            </div>
+
+            <form id="formBuscarUsuario" class="search-form">
+
+                <div class="form-group search-input-group">
+
+                    <label for="buscarId">
+                        ID del usuario
+                    </label>
+
+                    <input
+                        type="number"
+                        id="buscarId"
+                        name="buscarId"
+                        min="1"
+                        placeholder="Ejemplo: 1"
+                        required
+                    >
+
+                </div>
+
+                <div class="search-buttons">
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+                        Buscar
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnLimpiarBusqueda"
+                        class="btn-secondary">
+                        Limpiar
+                    </button>
+
+                </div>
+
+            </form>
+
+            <p id="mensajeBusqueda" class="mensaje"></p>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- USUARIOS -->
+        <!-- ========================= -->
 
         <section class="card">
 
             <div class="card-header">
-                <h2>Usuarios registrados</h2>
 
-                <button id="btnRecargar">
-                    Actualizar
+                <div>
+                    <h2>Usuarios registrados</h2>
+                    <p class="section-description">
+                        Lista de usuarios almacenados en la base de datos.
+                    </p>
+                </div>
+
+                <button
+                    id="btnRecargar"
+                    class="btn-secondary">
+                    ↻ Actualizar
                 </button>
+
             </div>
 
             <div class="table-container">
@@ -57,45 +137,56 @@
 
 
         <!-- ========================= -->
-        <!-- INSERTAR USUARIO -->
+        <!-- REGISTRAR USUARIO -->
         <!-- ========================= -->
 
         <section class="card">
 
-            <h2>Registrar nuevo usuario</h2>
+            <div class="card-header">
+                <div>
+                    <h2>Registrar nuevo usuario</h2>
+                    <p class="section-description">
+                        Completa los datos para agregar un nuevo usuario.
+                    </p>
+                </div>
+            </div>
 
             <form id="formUsuario">
 
-                <div class="form-group">
+                <div class="form-row">
 
-                    <label for="username">
-                        Username
-                    </label>
+                    <div class="form-group">
 
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        required
-                        placeholder="Ingrese el username"
-                    >
+                        <label for="username">
+                            Username
+                        </label>
 
-                </div>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                            placeholder="Ingrese el username"
+                        >
+
+                    </div>
 
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label for="password">
-                        Password
-                    </label>
+                        <label for="password">
+                            Password
+                        </label>
 
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        required
-                        placeholder="Ingrese el password"
-                    >
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            placeholder="Ingrese el password"
+                        >
+
+                    </div>
 
                 </div>
 
@@ -119,7 +210,7 @@
 
                 <button
                     type="submit"
-                    class="btn-primary">
+                    class="btn-primary btn-full">
                     Registrar usuario
                 </button>
 
