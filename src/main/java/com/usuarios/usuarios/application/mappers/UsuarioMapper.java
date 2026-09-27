@@ -7,7 +7,7 @@ import com.usuarios.usuarios.application.dtos.usuario.UsuarioRequestDTO;
 import com.usuarios.usuarios.application.dtos.usuario.UsuarioResponseDTO;
 import com.usuarios.usuarios.core.models.UsuarioModel;
 
-@Mapper
+@Mapper(componentModel="spring")
 public interface UsuarioMapper {
     
     public UsuarioResponseDTO toResponse(UsuarioModel model);
