@@ -1,40 +1,33 @@
 
 
-const API_URL = "/api/usuarios";
+const API_URL = "/usuarios";
 
 
 
-const tablaUsuarios = document.getElementById("tablaUsuarios");
-
-const mensajeTabla = document.getElementById("mensajeTabla");
-
-const formUsuario = document.getElementById("formUsuario");
-
-const mensajeFormulario =
-    document.getElementById("mensajeFormulario");
-
-const btnRecargar =
-    document.getElementById("btnRecargar");
+const tablaUsuarios = document.getElementById("usuariosTableBody");
+const formulario = document.getElementById("usuarioForm");
+const mensaje = document.getElementById("mensaje");
+const btnActualizar = document.getElementById("btnActualizar");
 
 
 
-
-async function obtenerUsuarios() {
+async function cargarUsuarios() {
 
     try {
 
-        mensajeTabla.textContent =
-            "Cargando usuarios...";
+        tablaUsuarios.innerHTML = `
+            <tr>
+                <td colspan="4">Cargando usuarios...</td>
+            </tr>
+        `;
 
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}/listarUsuarios`);
+
 
         if (!response.ok) {
-
-            throw new Error(
-                "Error al obtener los usuarios"
-            );
-
+            throw new Error("Error al obtener los usuarios");
         }
+
 
         const usuarios = await response.json();
 
@@ -44,11 +37,14 @@ async function obtenerUsuarios() {
 
         console.error(error);
 
-        mensajeTabla.textContent =
-            "No se pudieron cargar los usuarios.";
-
+        tablaUsuarios.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    No se pudieron cargar los usuarios.
+                </td>
+            </tr>
+        `;
     }
-
 }
 
 
@@ -57,71 +53,91 @@ function mostrarUsuarios(usuarios) {
 
     tablaUsuarios.innerHTML = "";
 
-    if (!usuarios || usuarios.length === 0) {
 
-        mensajeTabla.textContent =
-            "No existen usuarios registrados.";
+    if (usuarios.length === 0) {
+
+        tablaUsuarios.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    No hay usuarios registrados.
+                </td>
+            </tr>
+        `;
 
         return;
     }
 
-    mensajeTabla.textContent = "";
 
     usuarios.forEach(usuario => {
 
         const fila = document.createElement("tr");
 
+
         fila.innerHTML = `
+            <td>${usuario.id}</td>
 
-            <td>${usuario.id ?? ""}</td>
+            <td>${usuario.username}</td>
 
-            <td>${usuario.username ?? ""}</td>
+            <td>********</td>
 
-            <td>${usuario.password ?? ""}</td>
-
-            <td>${usuario.role ?? ""}</td>
-
+            <td>${usuario.role}</td>
         `;
 
+
         tablaUsuarios.appendChild(fila);
-
     });
-
 }
 
 
 
+formulario.addEventListener("submit", async function(event) {
 
-async function insertarUsuario(usuario) {
+    event.preventDefault();
+
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
+
+
+    const nuevoUsuario = {
+
+        username: username,
+        password: password,
+        role: role
+
+    };
+
 
     try {
 
-        const response = await fetch(API_URL, {
+        mensaje.textContent = "Creando usuario...";
 
-            method: "POST",
 
-            headers: {
+        const response = await fetch(
+            `${API_URL}/crearUsuario`,
+            {
+                method: "POST",
 
-                "Content-Type": "application/json"
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-            },
-
-            body: JSON.stringify(usuario)
-
-        });
+                body: JSON.stringify(nuevoUsuario)
+            }
+        );
 
 
         if (!response.ok) {
 
             throw new Error(
-                "Error al insertar el usuario"
+                "No se pudo crear el usuario"
             );
 
         }
 
 
-        const usuarioCreado =
-            await response.json();
+        const usuarioCreado = await response.json();
 
 
         console.log(
@@ -130,74 +146,41 @@ async function insertarUsuario(usuario) {
         );
 
 
-        mensajeFormulario.textContent =
-            "Usuario registrado correctamente.";
+        mensaje.textContent =
+            "Usuario creado correctamente.";
 
 
-        formUsuario.reset();
+        mensaje.style.color = "green";
 
-        obtenerUsuarios();
+
+        formulario.reset();
+
+
+        // Volver a cargar la tabla
+        cargarUsuarios();
 
 
     } catch (error) {
 
         console.error(error);
 
-        mensajeFormulario.textContent =
-            "No se pudo registrar el usuario.";
 
+        mensaje.textContent =
+            "Error al crear el usuario.";
+
+
+        mensaje.style.color = "red";
     }
 
-}
-
-
-formUsuario.addEventListener(
-    "submit",
-    async function (event) {
-
-        event.preventDefault();
-
-
-        const username =
-            document.getElementById("username").value;
-
-        const password =
-            document.getElementById("password").value;
-
-        const role =
-            document.getElementById("role").value;
-
-
-        // Objeto que coincide con
-        // UsuarioResponseDTO
-
-        const usuario = {
-
-            username: username,
-
-            password: password,
-
-            role: role
-
-        };
-
-
-        await insertarUsuario(usuario);
-
-    }
-);
+});
 
 
 
 
-btnRecargar.addEventListener(
+btnActualizar.addEventListener(
     "click",
-    obtenerUsuarios
+    cargarUsuarios
 );
 
 
-
-document.addEventListener(
-    "DOMContentLoaded",
-    obtenerUsuarios
-);
+cargarUsuarios();
