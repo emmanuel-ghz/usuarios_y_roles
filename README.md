@@ -2,6 +2,7 @@
 
 Aplicación Spring Boot para gestionar usuarios y roles sobre PostgreSQL.
 
+Repositorio de Git: https://github.com/emmanuel-ghz/usuarios_y_roles.git 
 ## Requisitos
 
 - Java 21
