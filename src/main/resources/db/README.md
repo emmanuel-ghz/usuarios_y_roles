@@ -18,7 +18,7 @@ psql -U postgres -f usuarios_roles.sql
 Se pedirá la contraseña del usuario `postgres`. Al terminar, se mostrará el contenido de la tabla `user_account`.
 
 > **Importante:** el script debe ejecutarse con `psql`, ya que usa el comando `\c` para conectarse a la nueva base.
-> Además, borra la base `roles_usuarios` si ya existe y la vuelve a crear.
+> Además, borra la base `usuarios_roles` si ya existe y la vuelve a crear.
 
 ### Si el usuario `postgres` no existe (macOS con Homebrew o Postgres.app)
 
@@ -43,14 +43,13 @@ Todos tienen la contraseña `password` (almacenada como hash BCrypt).
 | angel    | USER  |
 | luis     | USER  |
 | andrik   | ADMIN |
-| admin    | ADMIN |
 
 ## Conexión desde Spring Boot
 
 En `src/main/resources/application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/roles_usuarios
+spring.datasource.url=jdbc:postgresql://localhost:5432/usuarios_roles
 spring.datasource.username=postgres
-spring.datasource.password=tu_contraseña
+spring.datasource.password=postgres
 ```
